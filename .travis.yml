@@ -16,6 +16,7 @@ before_install:
   - git config --global user.email $HOSTNAME":not-for-mail@travis-ci.org"
   - pg_config --version
   - echo "select version()" | psql
+  - ./autogen.sh
   #- export LSB_RELEASE=$( lsb_release -rs )
   - export RUNTESTFLAGS=-v
 #install:
