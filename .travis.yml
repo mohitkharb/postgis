@@ -15,7 +15,7 @@ before_install:
   - git config --global user.name "PostGIS Travis CI"
   - git config --global user.email $HOSTNAME":not-for-mail@travis-ci.org"
   - pg_config --version
-  - psql -c "select version()"
+  - echo "select version()" | psql
   #- export LSB_RELEASE=$( lsb_release -rs )
   - export RUNTESTFLAGS=-v
 #install:
