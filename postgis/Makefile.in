@@ -71,6 +71,7 @@ PG_OBJS= \
 	lwgeom_transform.o \
 	gserialized_typmod.o \
 	gserialized_gist_2d.o \
+	sp_gist.o \
 	gserialized_gist_nd.o \
 	gserialized_estimate.o \
 	geography_inout.o \
