@@ -21,7 +21,7 @@
 
 
 Datum
-spg_quad_config(PG_FUNCTION_ARGS)
+geometry_spgist_config_2d(PG_FUNCTION_ARGS)
 {
 	/* spgConfigIn *cfgin = (spgConfigIn *) PG_GETARG_POINTER(0); */
 	spgConfigOut *cfg = (spgConfigOut *) PG_GETARG_POINTER(1);
@@ -79,7 +79,7 @@ getQuadrant(Point *centroid, Point *tst)
 
 
 Datum
-spg_quad_choose(PG_FUNCTION_ARGS)
+geometry_spgist_choose_2d(PG_FUNCTION_ARGS)
 {
 	spgChooseIn *in = (spgChooseIn *) PG_GETARG_POINTER(0);
 	spgChooseOut *out = (spgChooseOut *) PG_GETARG_POINTER(1);

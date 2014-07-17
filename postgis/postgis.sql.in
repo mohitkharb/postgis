@@ -737,6 +737,15 @@ CREATE OR REPLACE FUNCTION geometry_spgist_picksplit_2d(internal,internal)
 	AS 'MODULE_PATHNAME' ,'geometry_spgist_picksplit_2d'
 	LANGUAGE 'c';
 
+CREATE OR REPLACE FUNCTION geometry_spgist_config_2d(internal,internal) 
+	RETURNS internal 
+	AS 'MODULE_PATHNAME' ,'geometry_spgist_config_2d'
+	LANGUAGE 'c';
+
+CREATE OR REPLACE FUNCTION geometry_spgist_choose_2d(internal,internal) 
+	RETURNS internal 
+	AS 'MODULE_PATHNAME' ,'geometry_spgist_choose_2d'
+	LANGUAGE 'c';
 
 -- Availability: 2.2.0
 CREATE OPERATOR CLASS spgist_geometry_ops_2d
@@ -756,9 +765,12 @@ CREATE OPERATOR CLASS spgist_geometry_ops_2d
 --	OPERATOR        12       |&> ,
 --	OPERATOR        13       <-> FOR ORDER BY pg_catalog.float_ops,
 --	OPERATOR        14       <#> FOR ORDER BY pg_catalog.float_ops,
-	FUNCTION        2        geometry_spgist_leaf_consistent_2d(internal,geometry,int4),
-	FUNCTION        1        geometry_spgist_inner_consistent_2d(internal,geometry,int4),
+	FUNCTION	1	geometry_spgist_config_2d(internal,internal),
+	FUNCTION	2	geometry_spgist_choose_2d(internal,internal),
+	FUNCTION        5        geometry_spgist_leaf_consistent_2d(internal,geometry,int4),
+	FUNCTION        4        geometry_spgist_inner_consistent_2d(internal,geometry,int4),
 	FUNCTION        3         geometry_spgist_picksplit_2d(internal,internal);
+	
 
 #endif
 -----------------------------------------------------------------------------
