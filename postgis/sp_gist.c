@@ -52,6 +52,7 @@ geometry_spgist_config_2d(PG_FUNCTION_ARGS)
 static int
 getQuadrant(Point *centroid, Point *tst)
 {
+	elog(NOTICE, "my message %s", "get quadrant");
 	if ((SPTEST(point_above, tst, centroid) ||
 		 SPTEST(point_horiz, tst, centroid)) &&
 		(SPTEST(point_right, tst, centroid) ||
@@ -81,6 +82,7 @@ getQuadrant(Point *centroid, Point *tst)
 Datum
 geometry_spgist_choose_2d(PG_FUNCTION_ARGS)
 {
+	elog(NOTICE, "my message %s", "in choose_2d");
 	spgChooseIn *in = (spgChooseIn *) PG_GETARG_POINTER(0);
 	spgChooseOut *out = (spgChooseOut *) PG_GETARG_POINTER(1);
 	Point	   *inPoint = DatumGetPointP(in->datum),
@@ -136,6 +138,7 @@ y_cmp(const void *a, const void *b, void *arg)
 Datum
 geometry_spgist_picksplit_2d(PG_FUNCTION_ARGS)
 {
+	elog(NOTICE, "my message %s", "in picksplit");
 	spgPickSplitIn *in = (spgPickSplitIn *) PG_GETARG_POINTER(0);
 	spgPickSplitOut *out = (spgPickSplitOut *) PG_GETARG_POINTER(1);
 	int			i;
@@ -194,6 +197,8 @@ geometry_spgist_picksplit_2d(PG_FUNCTION_ARGS)
 Datum
 geometry_spgist_inner_consistent_2d(PG_FUNCTION_ARGS)
 {
+
+	elog(NOTICE, "my message %s", "in picksplit");
 	spgInnerConsistentIn *in = (spgInnerConsistentIn *) PG_GETARG_POINTER(0);
 	spgInnerConsistentOut *out = (spgInnerConsistentOut *) PG_GETARG_POINTER(1);
 	Point	   *centroid;
