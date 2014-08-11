@@ -720,30 +720,30 @@ CREATE OPERATOR CLASS gist_geometry_ops_2d
 -- ---------- ---------- ---------- ---------- ---------- ---------- ----------
 #if POSTGIS_PGSQL_VERSION >= 92
 -- Availability: 2.2.0
-CREATE OR REPLACE FUNCTION geometry_spgist_leaf_consistent_2d(internal,geometry,int4) 
+CREATE OR REPLACE FUNCTION geometry_spgist_leaf_consistent_2d(internal,internal) 
 	RETURNS bool 
 	AS 'MODULE_PATHNAME' ,'geometry_spgist_leaf_consistent_2d'
 	LANGUAGE 'c';
 
 -- Availability: 2.2.0
-CREATE OR REPLACE FUNCTION geometry_spgist_inner_consistent_2d(internal,geometry,int4) 
-	RETURNS bool 
+CREATE OR REPLACE FUNCTION geometry_spgist_inner_consistent_2d(internal,internal) 
+	RETURNS void 
 	AS 'MODULE_PATHNAME' ,'geometry_spgist_inner_consistent_2d'
 	LANGUAGE 'c';
 
 -- Availability: 2.2.0
 CREATE OR REPLACE FUNCTION geometry_spgist_picksplit_2d(internal,internal) 
-	RETURNS internal 
+	RETURNS void 
 	AS 'MODULE_PATHNAME' ,'geometry_spgist_picksplit_2d'
 	LANGUAGE 'c';
 
 CREATE OR REPLACE FUNCTION geometry_spgist_config_2d(internal,internal) 
-	RETURNS internal 
+	RETURNS void 
 	AS 'MODULE_PATHNAME' ,'geometry_spgist_config_2d'
 	LANGUAGE 'c';
 
 CREATE OR REPLACE FUNCTION geometry_spgist_choose_2d(internal,internal) 
-	RETURNS internal 
+	RETURNS void 
 	AS 'MODULE_PATHNAME' ,'geometry_spgist_choose_2d'
 	LANGUAGE 'c';
 

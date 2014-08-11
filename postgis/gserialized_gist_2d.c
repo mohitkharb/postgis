@@ -768,6 +768,7 @@ Datum gserialized_overbelow_2d(PG_FUNCTION_ARGS)
 PG_FUNCTION_INFO_V1(gserialized_gist_compress_2d);
 Datum gserialized_gist_compress_2d(PG_FUNCTION_ARGS)
 {
+	elog(NOTICE, "my message %s", "compress");
 	GISTENTRY *entry_in = (GISTENTRY*)PG_GETARG_POINTER(0);
 	GISTENTRY *entry_out = NULL;
 	BOX2DF bbox_out;
@@ -841,6 +842,7 @@ Datum gserialized_gist_compress_2d(PG_FUNCTION_ARGS)
 PG_FUNCTION_INFO_V1(gserialized_gist_decompress_2d);
 Datum gserialized_gist_decompress_2d(PG_FUNCTION_ARGS)
 {
+	elog(NOTICE, "my message %s", "decompres");
 	POSTGIS_DEBUG(5, "[GIST] 'decompress' function called");
 	/* We don't decompress. Just return the input. */
 	PG_RETURN_POINTER(PG_GETARG_POINTER(0));
@@ -981,6 +983,7 @@ static inline bool gserialized_gist_consistent_internal_2d(BOX2DF *key, BOX2DF *
 PG_FUNCTION_INFO_V1(gserialized_gist_consistent_2d);
 Datum gserialized_gist_consistent_2d(PG_FUNCTION_ARGS)
 {
+	elog(NOTICE, "my message %s", "consistent");
 	GISTENTRY *entry = (GISTENTRY*) PG_GETARG_POINTER(0);
 	StrategyNumber strategy = (StrategyNumber) PG_GETARG_UINT16(2);
 	bool result;
@@ -1055,6 +1058,7 @@ Datum gserialized_gist_consistent_2d(PG_FUNCTION_ARGS)
 PG_FUNCTION_INFO_V1(gserialized_gist_distance_2d);
 Datum gserialized_gist_distance_2d(PG_FUNCTION_ARGS)
 {
+	elog(NOTICE, "my message %s", "distance");
 	GISTENTRY *entry = (GISTENTRY*) PG_GETARG_POINTER(0);
 	BOX2DF query_box;
 	BOX2DF *entry_box;
@@ -1110,6 +1114,7 @@ Datum gserialized_gist_distance_2d(PG_FUNCTION_ARGS)
 PG_FUNCTION_INFO_V1(gserialized_gist_penalty_2d);
 Datum gserialized_gist_penalty_2d(PG_FUNCTION_ARGS)
 {
+	elog(NOTICE, "my message %s", "penalty");
 	GISTENTRY *origentry = (GISTENTRY*) PG_GETARG_POINTER(0);
 	GISTENTRY *newentry = (GISTENTRY*) PG_GETARG_POINTER(1);
 	float *result = (float*) PG_GETARG_POINTER(2);
@@ -1145,6 +1150,7 @@ Datum gserialized_gist_penalty_2d(PG_FUNCTION_ARGS)
 PG_FUNCTION_INFO_V1(gserialized_gist_union_2d);
 Datum gserialized_gist_union_2d(PG_FUNCTION_ARGS)
 {
+	elog(NOTICE, "my message %s", "union");
 	GistEntryVector	*entryvec = (GistEntryVector *) PG_GETARG_POINTER(0);
 	int *sizep = (int *) PG_GETARG_POINTER(1); /* Size of the return value */
 	int	numranges, i;
@@ -1178,6 +1184,7 @@ Datum gserialized_gist_union_2d(PG_FUNCTION_ARGS)
 PG_FUNCTION_INFO_V1(gserialized_gist_same_2d);
 Datum gserialized_gist_same_2d(PG_FUNCTION_ARGS)
 {
+	elog(NOTICE, "my message %s", "same");
 	BOX2DF *b1 = (BOX2DF*)PG_GETARG_POINTER(0);
 	BOX2DF *b2 = (BOX2DF*)PG_GETARG_POINTER(1);
 	bool *result = (bool*)PG_GETARG_POINTER(2);
@@ -1564,6 +1571,7 @@ common_entry_cmp(const void *i1, const void *i2)
 PG_FUNCTION_INFO_V1(gserialized_gist_picksplit_2d);
 Datum gserialized_gist_picksplit_2d(PG_FUNCTION_ARGS)
 {
+	elog(NOTICE, "my message %s", "picksplit");
 	GistEntryVector *entryvec = (GistEntryVector *) PG_GETARG_POINTER(0);
 	GIST_SPLITVEC *v = (GIST_SPLITVEC *) PG_GETARG_POINTER(1);
 	OffsetNumber i,
@@ -1950,6 +1958,7 @@ compare_KB(const void* a, const void* b)
 PG_FUNCTION_INFO_V1(gserialized_gist_picksplit_2d);
 Datum gserialized_gist_picksplit_2d(PG_FUNCTION_ARGS)
 {
+	elog(NOTICE, "my message %s", "picksplit1");
 	GistEntryVector	*entryvec = (GistEntryVector *) PG_GETARG_POINTER(0);
 
 	GIST_SPLITVEC *v = (GIST_SPLITVEC *) PG_GETARG_POINTER(1);

@@ -18,18 +18,46 @@
 #include "liblwgeom_internal.h"  /* For MAXFLOAT */
 
 
+Datum geometry_spgist_config_2d(PG_FUNCTION_ARGS);
+Datum geometry_spgist_choose_2d(PG_FUNCTION_ARGS);
+Datum geometry_spgist_picksplit_2d(PG_FUNCTION_ARGS);
+Datum geometry_spgist_inner_consistent_2d(PG_FUNCTION_ARGS);
+Datum geometry_spgist_leaf_consistent_2d(PG_FUNCTION_ARGS);
+
+/*
+Datum spgist_overleft_2d(PG_FUNCTION_ARGS);
+Datum spgist_overright_2d(PG_FUNCTION_ARGS);
+Datum spgist_same_2d(PG_FUNCTION_ARGS);
+Datum spgist_within_2d(PG_FUNCTION_ARGS);
+Datum spgist_overabove_2d(PG_FUNCTION_ARGS);
+Datum spgist_overbelow_2d(PG_FUNCTION_ARGS);
+*/
+
 
 
 Datum
 geometry_spgist_config_2d(PG_FUNCTION_ARGS)
 {
-	/* spgConfigIn *cfgin = (spgConfigIn *) PG_GETARG_POINTER(0); */
+	elog(NOTICE, "my message %s", "config");
+	POSTGIS_DEBUGF(3, "entered config_2d");
+//	GISTENTRY *entry_in = (GISTENTRY*)PG_GETARG_POINTER(0);
+//	GISTENTRY *entry_out = (GISTENTRY*) PG_GETARG_POINTER(1);	
+
+
+
+	 spgConfigIn *cfgin = (spgConfigIn *) PG_GETARG_POINTER(0); 
 	spgConfigOut *cfg = (spgConfigOut *) PG_GETARG_POINTER(1);
 
+	elog(NOTICE, "my message");
+	
 	cfg->prefixType = POINTOID;
+	elog(NOTICE, "my message %s", "config222");
+
 	cfg->labelType = VOIDOID;	/* we don't need node labels */
+
 	cfg->canReturnData = true;
 	cfg->longValuesOK = false;
+
 	PG_RETURN_VOID();
 }
 
@@ -53,6 +81,7 @@ static int
 getQuadrant(Point *centroid, Point *tst)
 {
 	elog(NOTICE, "my message %s", "get quadrant");
+	POSTGIS_DEBUGF(1, "get quadrant");
 	if ((SPTEST(point_above, tst, centroid) ||
 		 SPTEST(point_horiz, tst, centroid)) &&
 		(SPTEST(point_right, tst, centroid) ||
@@ -83,6 +112,7 @@ Datum
 geometry_spgist_choose_2d(PG_FUNCTION_ARGS)
 {
 	elog(NOTICE, "my message %s", "in choose_2d");
+	POSTGIS_DEBUGF(1, "entered choose_2d");
 	spgChooseIn *in = (spgChooseIn *) PG_GETARG_POINTER(0);
 	spgChooseOut *out = (spgChooseOut *) PG_GETARG_POINTER(1);
 	Point	   *inPoint = DatumGetPointP(in->datum),
